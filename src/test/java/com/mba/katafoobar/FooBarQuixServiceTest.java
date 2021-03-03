@@ -6,18 +6,24 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+@SpringBootTest
 class FooBarQuixServiceTest {
+
+	@Autowired
+	FooBarQuixService fooBarQuixService;
 
 	@DisplayName("Test program that convert an input number into a string")
 	@ParameterizedTest(name = "{index} ==> Description du test : {0}")
 	@MethodSource("list_of_examples")
 	void test_convertNumberToString(String descryptionTest,String input,String output) {
-		String result = FooBarQuixService.numberToString(input);
+		String result = fooBarQuixService.numberToString(input);
 		Assertions.assertEquals(result,output);
 	}
 

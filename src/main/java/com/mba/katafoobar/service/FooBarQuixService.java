@@ -1,5 +1,8 @@
 package com.mba.katafoobar.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FooBarQuixService {
 
     private static final String BAR = "Bar";
@@ -15,7 +18,7 @@ public class FooBarQuixService {
         If no match, return the input number as a string.
 
      */
-    public static String numberToString(String number){
+    public String numberToString(String number){
         StringBuilder result = new StringBuilder();
         if (Integer.parseInt(number) % 3 == 0) result.append(FOO);
         if (Integer.parseInt(number) % 5 == 0) result.append(BAR);
